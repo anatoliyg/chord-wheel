@@ -34,7 +34,8 @@ function ChordWheel(config) {
         var controls = $("<div></div>")
             .addClass('controls')
             .css({
-                width: container.width()
+                width: container.width(),
+                marginTop: 40
             })
 
         for(var i = 0; i < notes1Arr.length; i ++) {
@@ -79,15 +80,15 @@ function ChordWheel(config) {
         var eachWheelHeight = ((parentH - innerPadding) / 2) / 3; 
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
-        var innerWheel = new EachWheel(eachWheelHeight * 1.9, 70, 18, notes1Arr, 'wheel0', 'red' , 3);
+        var innerWheel = new EachWheel(eachWheelHeight * 1.4, 50, 30, notes1Arr, 'wheel0', 'red' , 3);
         container.append(innerWheel.getDiv());
         centerInContainer(innerWheel);
 
-        var middleWheel = new EachWheel(eachWheelHeight * 2.4, 50, 27, notes2Arr, 'wheel1', 'yellow' , 2);
+        var middleWheel = new EachWheel(eachWheelHeight * 2.2, 50, 18, notes2Arr, 'wheel1', 'yellow' , 2);
         container.append(middleWheel.getDiv());
         centerInContainer(middleWheel);
 
-        var bigWheel = new EachWheel(eachWheelHeight * 3, 70, 40, notes3Arr, 'wheel3', 'green', 1);
+        var bigWheel = new EachWheel(eachWheelHeight * 3, 90, 40, notes3Arr, 'wheel3', 'green', 1);
         container.append(bigWheel.getDiv());
         centerInContainer(bigWheel);
 
@@ -107,11 +108,6 @@ function ChordWheel(config) {
 
         container.append(hole);   
         centerInContainer(hole);
-
-
-
-        //most inner wheel
-        //var containerWheel0 = 
     }
 
     function centerInContainer(wheel) {
@@ -127,7 +123,6 @@ function ChordWheel(config) {
             top: offset
         })
     }
-
 
     init();
 }

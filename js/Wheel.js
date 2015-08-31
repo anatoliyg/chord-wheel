@@ -19,24 +19,28 @@ function EachWheel( eachItemHeight, innerWidth, fontSize, dataArray, divClass, b
     };
 
     function buildNotes() {
-        for(var i = 0; i < data.length; i ++) {
-            var noteDiv = $('<div></div>')
-                .addClass('note')
-                .css({
-                    position: 'absolute',
-                    left: eachItemHeight  - (innerWidth / 2),
-                    top: 0,
-                    transform : 'rotateZ('+(i * eachNoteAngle)+'deg)',
-                    'transform-origin': 'bottom center',
-                    backgroundColor: bgColor,
-                    height : eachItemHeight ,
-                    width: innerWidth,
-                    fontSize: fontSize,
-                    textAlign: 'center'
+        var noteDiv = null;
 
-                })
-                .text(data[i])
-                .appendTo(wheelDiv);
+        for(var i = 0; i < data.length; i ++) {
+            noteDiv = $('<div></div>')
+            .addClass('slice')
+            .css({
+                position: 'absolute',
+                left: eachItemHeight  - (innerWidth / 2),
+                top: 0,
+                //paddingTop: 10,
+                transform : 'rotateZ('+(i * eachNoteAngle)+'deg)',
+                'transform-origin': 'bottom center',
+                //backgroundColor: bgColor,
+                'background-image': 'url(img/slice.png)',
+                'background-size': '100% 100%',
+                height : eachItemHeight ,
+                width: innerWidth,
+                fontSize: fontSize,
+                textAlign: 'center'
+            })
+            .text(data[i])
+            .appendTo(wheelDiv);
         }
     }
 
