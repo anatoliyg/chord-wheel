@@ -19,7 +19,9 @@ function ChordWheel(config) {
 
     function init(){
 
+
         buildWheels();
+        buildControls();
         //buildMask();
         addTouchListeners();
     }
@@ -27,6 +29,44 @@ function ChordWheel(config) {
     function addTouchListeners(){
 
     }
+
+    function buildControls() {
+        var controls = $("<div></div>")
+            .addClass('controls')
+            .css({
+                width: container.width()
+            })
+
+        for(var i = 0; i < notes1Arr.length; i ++) {
+            var btn = $('<button data-note-index='+i+'>'+notes1Arr[i]+'</button>')
+                .css({
+                    width: 70,
+                    marginRight: 30,
+                    marginBottom: 10
+                })
+                .click(function(e){
+                    var index = $(e.currentTarget).data('note-index');
+                    scrollToIndex(index)
+                });
+
+            controls.append(btn);
+        }
+
+        $('body').append(controls);
+    }
+
+    function scrollToIndex(index) {
+    
+        var eachNoteAngle = 360 / notes1Arr.length;
+
+        var desiredRotation = index * -eachNoteAngle;
+        //letsmake it remainder of deviding by 360
+        //desiredRotation = desiredRotation % 360;
+
+        container.css({
+            transform : 'rotateZ('+ desiredRotation+'deg)',
+        });
+    };
 
     function buildWheels() {
         var parentW = container.width(),
@@ -39,11 +79,11 @@ function ChordWheel(config) {
         var eachWheelHeight = ((parentH - innerPadding) / 2) / 3; 
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
-        var innerWheel = new EachWheel(innerWheelHeight, 30, 12, notes1Arr, 'wheel0', 'red' , 3);
+        var innerWheel = new EachWheel(eachWheelHeight * 1.9, 70, 18, notes1Arr, 'wheel0', 'red' , 3);
         container.append(innerWheel.getDiv());
         centerInContainer(innerWheel);
 
-        var middleWheel = new EachWheel(eachWheelHeight * 2, 50, 30, notes2Arr, 'wheel1', 'yellow' , 2);
+        var middleWheel = new EachWheel(eachWheelHeight * 2.4, 50, 27, notes2Arr, 'wheel1', 'yellow' , 2);
         container.append(middleWheel.getDiv());
         centerInContainer(middleWheel);
 
@@ -52,9 +92,10 @@ function ChordWheel(config) {
         centerInContainer(bigWheel);
 
         //add a hole
+        var holeDiameter  = container.width() / 4;
         hole = $('<div></div')
-            .width(80)
-            .height(80)
+            .width(holeDiameter)
+            .height(holeDiameter)
             .css({
                 position: 'absolute',
                 top: 0,

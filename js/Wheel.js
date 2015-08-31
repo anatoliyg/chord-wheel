@@ -2,8 +2,8 @@ function EachWheel( eachItemHeight, innerWidth, fontSize, dataArray, divClass, b
 
     var wheelDiv = $('<div></div>')
         .addClass(divClass)
-        .width((eachItemHeight * 2) + 80)
-        .height((eachItemHeight * 2) + 80)
+        .width((eachItemHeight * 2) )
+        .height((eachItemHeight * 2) )
         .css({
             position: 'absolute',
             top: 0,
@@ -24,12 +24,12 @@ function EachWheel( eachItemHeight, innerWidth, fontSize, dataArray, divClass, b
                 .addClass('note')
                 .css({
                     position: 'absolute',
-                    left: eachItemHeight + 40 - (innerWidth / 2),
+                    left: eachItemHeight  - (innerWidth / 2),
                     top: 0,
                     transform : 'rotateZ('+(i * eachNoteAngle)+'deg)',
                     'transform-origin': 'bottom center',
                     backgroundColor: bgColor,
-                    height : eachItemHeight + 40,
+                    height : eachItemHeight ,
                     width: innerWidth,
                     fontSize: fontSize,
                     textAlign: 'center'
