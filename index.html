@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<script type="text/javascript" src='https://code.jquery.com/jquery-2.1.4.js'></script>
+    <head>
+        <title></title>
+        <script type="text/javascript" src='https://code.jquery.com/jquery-2.1.4.js'></script>
 
-		<style type="text/css">
+        <style type="text/css">
 
-			html, body {
-				margin: 0;
-				padding: 0;
-			}
-			#wheelHolder1 {
-				width: 600px;
-				height: 600px;
-			}
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+            #wheelHolder {
+                width: 500px;
+                height: 500px;
+       
+            }
 
 
 
-		</style>
-	</head>
-	<body>
+        </style>
+    </head>
+    <body>
 
-		<div id='wheelHolder1'></div>
+        <div id='wheelHolder'></div>
 
-		<script type="text/javascript" src='ChordWheel.js'></script>
-		<script type="text/javascript" src='Wheel.js'></script>
+        <script type="text/javascript" src='js/ChordWheel.js'></script>
+        <script type="text/javascript" src='js/Wheel.js'></script>
 
-		<script type="text/javascript">
+        <script type="text/javascript">
 
-			$(function() {
+            $(function() {
 
-				var wheel = new ChordWheel({
-					div: $('#wheelHolder1'), 
-					bgColor: 'gray',
-					etc: null
-				});
+                var wheel = new ChordWheel({
+                    div: $('#wheelHolder'), 
+                    bgColor: 'gray',
+                    etc: null
+                });
 
-			});
+            });
 
-		</script>
+        </script>
 
-	</body>
+    </body>
 </html>
