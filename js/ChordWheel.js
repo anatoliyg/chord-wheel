@@ -12,13 +12,11 @@ function ChordWheel(config) {
         notes2Arr = wheel2Notes.split(" ");
         notes3Arr = wheel3Notes.split(" ");
 
-
     var innerPadding = 40;
     var hole = null;
 
 
     function init(){
-
 
         buildWheels();
         buildControls();
@@ -121,7 +119,7 @@ function ChordWheel(config) {
         theWheel.css({
             left: offset,
             top: offset
-        })
+        });
     }
 
     init();
