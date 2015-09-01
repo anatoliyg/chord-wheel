@@ -9,7 +9,6 @@
             html, body {
                 margin: 0;
                 padding: 0;
-                background-color: gray;
                 
                 box-sizing: border-box;
                 -moz-box-sizing: border-box;
@@ -38,118 +37,22 @@
                 transition: all 1s ease;
             }
 
-            .meny {
-                display: none;
-                padding: 20px;
-                overflow: auto;
-                background: #333;
-                color: #eee;
-
-                -webkit-box-sizing: border-box;
-                   -moz-box-sizing: border-box;
-                        box-sizing: border-box;
-            }
-                .meny ul {
-                    margin-top: 10px;
-                }
-                    .meny ul li {
-                        display: inline-block;
-                        width: 200px;
-                        list-style: none;
-                        font-size: 20px;
-                        padding: 3px 10px;
-                    }
-                        .meny ul li:before {
-                            content: '-';
-                            margin-right: 5px;
-                            color: rgba( 255, 255, 255, 0.2 );
-                        }
-
-            /**
-             * Hint graphic that appears while menu is inactive
-             */
-            .meny-arrow {
-                position: absolute;
-                z-index: 10;
-
-                border: 10px solid transparent;
-
-                -webkit-transition: opacity 0.4s ease 0.4s;
-                   -moz-transition: opacity 0.4s ease 0.4s;
-                    -ms-transition: opacity 0.4s ease 0.4s;
-                     -o-transition: opacity 0.4s ease 0.4s;
-                        transition: opacity 0.4s ease 0.4s;
-            }
-                .meny-left .meny-arrow {
-                    left: 14px;
-                    top: 50%;
-                    margin-top: -16px;
-                    border-left: 16px solid #333;
-                }
-                .meny-right .meny-arrow {
-                    right: 14px;
-                    top: 50%;
-                    margin-top: -16px;
-                    border-right: 16px solid #333;
-                }
-                .meny-top .meny-arrow {
-                    left: 50%;
-                    top: 14px;
-                    margin-left: -16px;
-                    border-top: 16px solid #333;
-                }
-                .meny-bottom .meny-arrow {
-                    left: 50%;
-                    bottom: 14px;
-                    margin-left: -16px;
-                    border-bottom: 16px solid #333;
-                }
-                .meny-active .meny-arrow {
-                    opacity: 0;
-
-                    -webkit-transition: opacity 0.2s ease;
-                       -moz-transition: opacity 0.2s ease;
-                        -ms-transition: opacity 0.2s ease;
-                         -o-transition: opacity 0.2s ease;
-                            transition: opacity 0.2s ease;
-                }
-
-                /**
-                 * Main contents area
-                 */
-                .contents {
-                    background: #eee;
-                    padding: 20px 40px;
-                    width: 100%;
-                    height: 100%;
-                    overflow-y: auto;
-
-                    -webkit-overflow-scrolling: touch;
-                    -webkit-transform-style: preserve-3d;
-
-                    -webkit-box-sizing: border-box;
-                       -moz-box-sizing: border-box;
-                            box-sizing: border-box;
-                }
-
         </style>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
         <div class="meny">
-            <h2>More Experiments</h2>
             <ul>
-                <li><a href="http://lab.hakim.se/avgrund/">Avgrund</a></li>
-                <li><a href="http://lab.hakim.se/radar/">Radar</a></li>
-                <li><a href="http://lab.hakim.se/forkit-js/">forkit.js</a></li>
-                <li><a href="http://lab.hakim.se/scroll-effects/">stroll.js</a></li>
-                <li><a href="http://lab.hakim.se/zoom-js">zoom.js</a></li>
-                <li><a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
-                <li><a href="http://itunes.apple.com/us/app/sinuous/id543097218">Sinuous for iOS</a></li>
-                <li><a href="http://hakim.se/experiments/css/domtree/">DOM Tree</a></li>
-                <li><a href="http://hakim.se/experiments/css/holobox/">Holobox</a></li>
-                <li><a href="http://hakim.se/experiments/html5/404/netmag.html">404</a></li>
+                <li>Guitar</li>
+                <li>Piano</li>
+                <li>Strings</li>
+            </ul>
+            <ul>
+                <li>Chord</li>
+                <li>Arpegio</li>
             </ul>
         </div>
+        
         <div class="meny-arrow"></div>
 
         <div class="contents">
@@ -167,47 +70,35 @@
 
         <script type="text/javascript">
 
-            $(function() {
-
-                var wheel = new ChordWheel({
+            // create an instance of chordwheel
+            var wheel = new ChordWheel({
                     div: $('#wheelHolder'), 
                     bgColor: 'gray',
                     etc: null
                 });
 
-            });
-
-        </script>
-
-        <script>
             // Create an instance of Meny
             var meny = Meny.create({
-                // The element that will be animated in from off screen
                 menuElement: document.querySelector( '.meny' ),
-
                 // The contents that gets pushed aside while Meny is active
                 contentsElement: document.querySelector( '.contents' ),
-
                 // [optional] The alignment of the menu (top/right/bottom/left)
                 position: Meny.getQuery().p || 'bottom',
-
                 // [optional] The height of the menu (when using top/bottom position)
                 height: 200,
-
                 // [optional] The width of the menu (when using left/right position)
                 width: 260,
-
                 // [optional] Distance from mouse (in pixels) when menu should open
                 threshold: 40,
-
                 // [optional] Use mouse movement to automatically open/close
                 mouse: true,
-
                 // [optional] Use touch swipe events to open/close
                 touch: true
             });
 
-            // API Methods:
+        </script>
+
+        <script>        
             // meny.open();
             // meny.close();
             // meny.isOpen();
@@ -215,13 +106,6 @@
             // Events:
             // meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
             // meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
-
-            // Embed an iframe if a URL is passed in
-            if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
-                var contents = document.querySelector( '.contents' );
-                contents.style.padding = '0px';
-                contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
-            }
         </script>
 
     </body>
