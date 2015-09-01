@@ -59,7 +59,7 @@ function ChordWheel(config) {
             controls.append(btn);
         }
 
-        $('body').append(controls);
+        $('.contents').append(controls);
     };
 
     function scrollToIndex(index) {
