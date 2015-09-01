@@ -4,17 +4,17 @@ function ChordWheel(config) {
     var bgColor = config.bgColor;
     var container = config.div;
 
-    var wheel1Notes = 'c g d a e b f# c# ab eb bb f';
-    var wheel2Notes = 'em am bm em f#m bm c#m f#m g#m c#m d#m g#m a#m d#m e#m a#m d#m e#m a#m cm fm gm cm dm gm am dm';
-    var wheel3Notes = 'b f# c# g# d# a# e# c g d a e';
-
-    var notes1Arr = wheel1Notes.split(" ");
-        notes2Arr = wheel2Notes.split(" ");
-        notes3Arr = wheel3Notes.split(" ");
+    var notes1Arr = 'c g d a e b f# c# ab eb bb f'.split(" ");
+        notes2Arr = 'em am bm em f#m bm c#m f#m g#m c#m d#m g#m a#m d#m e#m a#m d#m e#m a#m cm fm gm cm dm gm am dm'.split(" ");
+        notes3Arr = 'b f# c# g# d# a# e# c g d a e'.split(" ");
 
     var innerPadding = 40;
     var hole = null;
 
+    var parentW,
+        parentH 
+
+    init();
 
     function init(){
 
@@ -22,11 +22,20 @@ function ChordWheel(config) {
         buildControls();
         //buildMask();
         addTouchListeners();
-    }
+    };
 
     function addTouchListeners(){
 
-    }
+        var rotationSnap = 90;
+        Draggable.create("#wheelHolder", {
+            type:"rotation", //instead of "x,y" or "top,left", we can simply do "rotation" to make the object spinnable! 
+            throwProps:true, //enables kinetic-based flicking (continuation of movement, decelerating after releasing the mouse/finger)
+            snap:function(endValue) { 
+                //this function gets called when the mouse/finger is released and it plots where rotation should normally end and we can alter that value and return a new one instead. This gives us an easy way to apply custom snapping behavior with any logic we want. In this case, just make sure the end value snaps to 90-degree increments but only when the "snap" checkbox is selected.
+                return Math.round(360 / notes1Arr.length);
+            }
+        });
+    };
 
     function buildControls() {
         var controls = $("<div></div>")
@@ -47,20 +56,16 @@ function ChordWheel(config) {
                     var index = $(e.currentTarget).data('note-index');
                     scrollToIndex(index)
                 });
-
             controls.append(btn);
         }
 
         $('body').append(controls);
-    }
+    };
 
     function scrollToIndex(index) {
     
         var eachNoteAngle = 360 / notes1Arr.length;
-
         var desiredRotation = index * -eachNoteAngle;
-        //letsmake it remainder of deviding by 360
-        //desiredRotation = desiredRotation % 360;
 
         container.css({
             transform : 'rotateZ('+ desiredRotation+'deg)',
@@ -68,30 +73,57 @@ function ChordWheel(config) {
     };
 
     function buildWheels() {
-        var parentW = container.width(),
-            parentH = container.height();
+        parentW = container.width();
+        parentH = container.height();
 
         if(parentW !== parentH) {
             console.warn('parent container should have the same width and height');
         }
 
-        var eachWheelHeight = ((parentH - innerPadding) / 2) / 3; 
+        var eachWheelHeight = ((parentH ) / 2) / 3; 
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
-        var innerWheel = new EachWheel(eachWheelHeight * 1.4, 50, 30, notes1Arr, 'wheel0', 'red' , 3);
+        var innerWheel = new EachWheel({
+            size: sizeFromRatio(0.37),
+            fontSize: 12,
+            data: notes1Arr,
+            className: 'wheel1',
+            bgColor: 'red',
+            bgImage: 'img/slice.png',
+            zIndex: 3, 
+            parent: container
+        });
         container.append(innerWheel.getDiv());
         centerInContainer(innerWheel);
 
-        var middleWheel = new EachWheel(eachWheelHeight * 2.2, 50, 18, notes2Arr, 'wheel1', 'yellow' , 2);
+        var middleWheel = new EachWheel({
+            size: sizeFromRatio(0.6),
+            fontSize: 14,
+            data: notes2Arr,
+            className: 'wheel2',
+            bgColor: 'yellow',
+            bgImage: 'img/slice.png',
+            zIndex: 2,
+            parent: container
+        });
         container.append(middleWheel.getDiv());
         centerInContainer(middleWheel);
 
-        var bigWheel = new EachWheel(eachWheelHeight * 3, 90, 40, notes3Arr, 'wheel3', 'green', 1);
+        var bigWheel = new EachWheel({
+            size: sizeFromRatio(1),
+            fontSize: 14,
+            data: notes2Arr,
+            className: 'wheel3',
+            bgColor: 'yellow',
+            bgImage: 'img/slice.png',
+            zIndex: 1,
+            parent: container
+        });
         container.append(bigWheel.getDiv());
         centerInContainer(bigWheel);
 
         //add a hole
-        var holeDiameter  = container.width() / 4;
+        var holeDiameter  = container.width() / 7;
         hole = $('<div></div')
             .width(holeDiameter)
             .height(holeDiameter)
@@ -106,7 +138,18 @@ function ChordWheel(config) {
 
         container.append(hole);   
         centerInContainer(hole);
-    }
+    };
+
+    function sizeFromRatio( ratio) {
+        var radius = parentW / 2;
+        var height = radius * ratio;
+
+        var width =  radius * radius * (2 - 2 * Math.cos(360/notes1Arr.length))
+        return {
+            width: 45,
+            height: height
+        }
+    };
 
     function centerInContainer(wheel) {
 
@@ -120,7 +163,5 @@ function ChordWheel(config) {
             left: offset,
             top: offset
         });
-    }
-
-    init();
-}
+    };
+};
