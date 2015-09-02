@@ -84,7 +84,7 @@ function ChordWheel(config) {
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
         var innerWheel = new EachWheel({
-            size: sizeFromRatio(0.37),
+            size: sizeFromRatio(0.43, notes1Arr.length),
             fontSize: 12,
             data: notes1Arr,
             className: 'wheel1',
@@ -97,8 +97,8 @@ function ChordWheel(config) {
         centerInContainer(innerWheel);
 
         var middleWheel = new EachWheel({
-            size: sizeFromRatio(0.6),
-            fontSize: 14,
+            size: sizeFromRatio(0.7, notes2Arr.length),
+            fontSize: 12,
             data: notes2Arr,
             className: 'wheel2',
             bgColor: 'yellow',
@@ -110,9 +110,9 @@ function ChordWheel(config) {
         centerInContainer(middleWheel);
 
         var bigWheel = new EachWheel({
-            size: sizeFromRatio(1),
-            fontSize: 14,
-            data: notes2Arr,
+            size: sizeFromRatio(1, notes3Arr.length),
+            fontSize: 54,
+            data: notes3Arr,
             className: 'wheel3',
             bgColor: 'yellow',
             bgImage: 'img/slice.png',
@@ -140,13 +140,22 @@ function ChordWheel(config) {
         centerInContainer(hole);
     };
 
-    function sizeFromRatio( ratio) {
+    function sizeFromRatio( ratio, angles) {
         var radius = parentW / 2;
         var height = radius * ratio;
 
-        var width =  radius * radius * (2 - 2 * Math.cos(360/notes1Arr.length))
+        var angle = 360 / angles;
+        var reversedAngle = (180 - angle) / 2;
+
+        //one angle is  (180 - angle) / 2 , another 90
+        //one side is height
+        //var h = height / (Math.sin(reversedAngle));
+
+        //var widthSqared =  (h * h) + (h * h) - 2 * h * h * Math.cos(reversedAngle);
+        var w = height /  Math.tan(reversedAngle  * (Math.PI/180));
+
         return {
-            width: 45,
+            width: w * 2,
             height: height
         }
     };

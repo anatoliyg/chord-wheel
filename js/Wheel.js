@@ -33,7 +33,7 @@ function EachWheel(config) {
                 left: config.size.height  - (config.size.width / 2),
                 top: 0,
                 //paddingTop: 20,
-                lineHeight: '50px',
+                lineHeight: config.size.height * .3+'px',
                 transform : 'rotateZ('+(i * eachNoteAngle)+'deg)',
                 'transform-origin': 'bottom center',
                 //backgroundColor: bgColor,
