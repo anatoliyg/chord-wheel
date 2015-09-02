@@ -35,7 +35,7 @@ function ChordWheel(config) {
             throwProps:true, //enables kinetic-based flicking (continuation of movement, decelerating after releasing the mouse/finger)
             snap:function(endValue) { 
                 //this function gets called when the mouse/finger is released and it plots where rotation should normally end and we can alter that value and return a new one instead. This gives us an easy way to apply custom snapping behavior with any logic we want. In this case, just make sure the end value snaps to 90-degree increments but only when the "snap" checkbox is selected.
-                return Math.round(360 / notes1Arr.length);
+                return 360 / notes1Arr.length;
             }
         });
     };
@@ -92,7 +92,7 @@ function ChordWheel(config) {
             data: notes1Arr,
             className: 'wheel1',
             bgColor: 'red',
-            bgImage: 'img/slice.png',
+            bgImage: 'img/slice-green.png',
             zIndex: 3, 
             parent: container
         });
@@ -105,7 +105,7 @@ function ChordWheel(config) {
             data: notes2Arr,
             className: 'wheel2',
             bgColor: 'yellow',
-            bgImage: 'img/slice.png',
+            bgImage: 'img/slice-blue.png',
             zIndex: 2,
             parent: container
         });
@@ -118,7 +118,7 @@ function ChordWheel(config) {
             data: notes3Arr,
             className: 'wheel3',
             bgColor: 'yellow',
-            bgImage: 'img/slice.png',
+            bgImage: 'img/slice-red.png',
             zIndex: 1,
             parent: container
         });
