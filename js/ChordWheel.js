@@ -5,8 +5,11 @@ function ChordWheel(config) {
     var container = config.div;
 
     var notes1Arr = 'c g d a e b f# c# ab eb bb f'.split(" ");
-        notes2Arr = 'em am bm em f#m bm c#m f#m g#m c#m d#m g#m a#m d#m e#m a#m d#m e#m a#m cm fm gm cm dm gm am dm'.split(" ");
+        notes2Arr = 'em am bm em f#m bm c#m f#m g#m c#m d#m g#m a#m d#m fm bbm cm fm gm cm dm gm am dm'.split(" ");
         notes3Arr = 'b f# c# g# d# a# e# c g d a e'.split(" ");
+
+
+        console.log(notes2Arr.length);
 
     var innerPadding = 40;
     var hole = null;
@@ -85,7 +88,7 @@ function ChordWheel(config) {
 
         var innerWheel = new EachWheel({
             size: sizeFromRatio(0.43, notes1Arr.length),
-            fontSize: 12,
+            fontSize: 20,
             data: notes1Arr,
             className: 'wheel1',
             bgColor: 'red',
