@@ -9,7 +9,7 @@ function ChordWheel(config) {
         notes3Arr = 'b f# c# g# d# a# e# c g d a e'.split(" ");
 
 
-        console.log(notes2Arr.length);
+        console.dir(notes2Arr.length);
 
     var innerPadding = 40;
     var hole = null;
