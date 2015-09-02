@@ -45,6 +45,7 @@ function ChordWheel(config) {
             .addClass('controls')
             .css({
                 width: container.width(),
+                margin: '0 auto',
                 marginTop: 40
             })
 
@@ -126,7 +127,7 @@ function ChordWheel(config) {
         centerInContainer(bigWheel);
 
         //add a hole
-        var holeDiameter  = container.width() / 7;
+        var holeDiameter  = container.width() / 4;
         hole = $('<div></div')
             .width(holeDiameter)
             .height(holeDiameter)
