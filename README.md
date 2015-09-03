@@ -1,3 +1,3 @@
 # chord-wheel
 
-Chord wheel app in HTML5
+Work in progress of a Chord Wheel app built with HTML5
