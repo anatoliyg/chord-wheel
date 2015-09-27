@@ -103,7 +103,7 @@ function ChordWheel(config) {
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
         var innerWheel = new EachWheel({
-            size: sizeFromRatio(0.3, notes1Arr.length),
+            size: sizeFromRatio(0.4, notes1Arr.length),
             fontSize: 20,
             data: notes1Arr,
             className: 'wheel1',
@@ -116,7 +116,7 @@ function ChordWheel(config) {
         centerInContainer(innerWheel);
 
         var middleWheel = new EachWheel({
-            size: sizeFromRatio(0.6, notes2Arr.length),
+            size: sizeFromRatio(0.7, notes2Arr.length),
             fontSize: 12,
             data: notes2Arr,
             className: 'wheel2',
@@ -136,7 +136,8 @@ function ChordWheel(config) {
             bgColor: 'yellow',
             bgImage: 'img/slice-red.png',
             zIndex: 1,
-            parent: container
+            parent: container,
+            autoWidth: 100
         });
         container.append(bigWheel.getDiv());
         centerInContainer(bigWheel);

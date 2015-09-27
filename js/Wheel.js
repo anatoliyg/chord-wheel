@@ -32,7 +32,7 @@ function EachWheel(config) {
             .addClass('slice')
             .css({
                 position: 'absolute',
-                left: config.size.height  - (config.size.width / 2),
+                left: config.size.height  - ((config.autoWidth ? config.autoWidth : config.size.width ) / 2),
                 top: 0,
                 //paddingTop: 20,
                 lineHeight: config.size.height * .3+'px',
@@ -42,7 +42,7 @@ function EachWheel(config) {
                 'background-image': 'url('+config.bgImage+')',
                 'background-size': '100% 100%',
                 height : config.size.height ,
-                width: config.size.width,
+                width: config.autoWidth ? config.autoWidth : config.size.width,
                 fontSize: config.fontSize,
                 textAlign: 'center'
             })
