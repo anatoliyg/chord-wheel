@@ -21,11 +21,21 @@ function ChordWheel(config) {
 
     function init(){
 
+
         buildWheels();
         buildControls();
         //buildMask();
         addTouchListeners();
     };
+
+    this.destroy = function(){
+        ///
+
+
+        container.empty();
+        container = null;
+
+    }
 
     function addTouchListeners(){
 
@@ -35,7 +45,7 @@ function ChordWheel(config) {
             throwProps:true, //enables kinetic-based flicking (continuation of movement, decelerating after releasing the mouse/finger)
             snap:function(endValue) { 
                 //this function gets called when the mouse/finger is released and it plots where rotation should normally end and we can alter that value and return a new one instead. This gives us an easy way to apply custom snapping behavior with any logic we want. In this case, just make sure the end value snaps to 90-degree increments but only when the "snap" checkbox is selected.
-                return 360 / notes1Arr.length;
+                //return 360 / notes1Arr.length;
             }
         });
     };
@@ -77,8 +87,13 @@ function ChordWheel(config) {
     };
 
     function buildWheels() {
-        parentW = container.width();
-        parentH = container.height();
+        parentW = config.width;
+        parentH = config.height;
+
+        container.css({
+            width: parentW,
+            height: parentH
+        })
 
         if(parentW !== parentH) {
             console.warn('parent container should have the same width and height');
@@ -88,7 +103,7 @@ function ChordWheel(config) {
         var innerWheelHeight = eachWheelHeight + innerPadding;
 
         var innerWheel = new EachWheel({
-            size: sizeFromRatio(0.43, notes1Arr.length),
+            size: sizeFromRatio(0.3, notes1Arr.length),
             fontSize: 20,
             data: notes1Arr,
             className: 'wheel1',
@@ -101,7 +116,7 @@ function ChordWheel(config) {
         centerInContainer(innerWheel);
 
         var middleWheel = new EachWheel({
-            size: sizeFromRatio(0.7, notes2Arr.length),
+            size: sizeFromRatio(0.6, notes2Arr.length),
             fontSize: 12,
             data: notes2Arr,
             className: 'wheel2',
@@ -114,7 +129,7 @@ function ChordWheel(config) {
         centerInContainer(middleWheel);
 
         var bigWheel = new EachWheel({
-            size: sizeFromRatio(1, notes3Arr.length),
+            size: sizeFromRatio(0.95, notes3Arr.length),
             fontSize: 54,
             data: notes3Arr,
             className: 'wheel3',
@@ -127,7 +142,7 @@ function ChordWheel(config) {
         centerInContainer(bigWheel);
 
         //add a hole
-        var holeDiameter  = container.width() / 4;
+        var holeDiameter  = container.width() / 10;
         hole = $('<div></div')
             .width(holeDiameter)
             .height(holeDiameter)

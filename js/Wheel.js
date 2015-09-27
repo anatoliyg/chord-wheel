@@ -26,6 +26,8 @@ function EachWheel(config) {
         var noteDiv = null;
 
         for(var i = 0; i < data.length; i ++) {
+
+            var theNote = data[i];
             noteDiv = $('<div data-note-index='+i+'></div>')
             .addClass('slice')
             .css({
@@ -45,6 +47,13 @@ function EachWheel(config) {
                 textAlign: 'center'
             })
             .html( cleanupNote(data[i]) )
+            .click(function(e){
+
+                var theNoteIndex = $(this).data('note-index')
+                var note = data[theNoteIndex];
+                console.log('should play '+note)
+                window.sound.play(note);
+            })
             .appendTo(wheelDiv);
         }
     };
