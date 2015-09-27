@@ -30,18 +30,10 @@
 
             /*the widget gets build off of this sizing*/
             #wheelHolder {
-                width: 500px;
-                height: 500px;
-
-                background-color: aquamarine;
+               /* background-color: aquamarine;*/
                 border-radius: 50%;
 
                 margin: 0 auto;
-                
-                -moz-transition: all 1s ease;
-                -webkit-transition: all 1s ease;
-                -o-transition: all 1s ease;
-                transition: all 1s ease;
             }
 
         </style>
@@ -67,41 +59,58 @@
         </div>
 
         
+        <script type="text/javascript" src="js/lib/ua.js"></script>
+        <script type="text/javascript" src="js/lib/howler.js"></script>
         <script type="text/javascript" src="js/lib/meny.js"></script>
         <script type="text/javascript" src='js/lib/gs/TweenLite.min.js'></script>
         <script type="text/javascript" src='js/lib/gs/utils/Draggable.min.js'></script>
+        <script type="text/javascript" src='js/lib/gs/plugins/ThrowPropsPlugin.js'></script>
         <script type="text/javascript" src='js/lib/gs/plugins/CSSPlugin.min.js'></script>
-
+        <script type="text/javascript" src='js/SoundManager.js'></script>
         <script type="text/javascript" src='js/ChordWheel.js'></script>
         <script type="text/javascript" src='js/Wheel.js'></script>
 
         <script type="text/javascript">
 
+            if (UA.isMobile()) {
+                //dev.innerHTML = "mobile device!";
+            }
+
+            var windowWidth = window.innerWidth;
+
+            var sm = new SoundManager();
+
             // create an instance of chordwheel
             var wheel = new ChordWheel({
                     div: $('#wheelHolder'), 
                     bgColor: 'gray',
+                    width: windowWidth - 300,
+                    height: windowWidth - 300, 
                     etc: null
                 });
 
-            // Create an instance of Meny
-            var meny = Meny.create({
-                menuElement: document.querySelector( '.meny' ),
-                // The contents that gets pushed aside while Meny is active
-                contentsElement: document.querySelector( '.contents' ),
-                // [optional] The alignment of the menu (top/right/bottom/left)
-                position: Meny.getQuery().p || 'bottom',
-                // [optional] The height of the menu (when using top/bottom position)
-                height: 100,
-                // [optional] The width of the menu (when using left/right position)
-                width: 260,
-                // [optional] Distance from mouse (in pixels) when menu should open
-                threshold: 40,
-                // [optional] Use mouse movement to automatically open/close
-                mouse: true,
-                // [optional] Use touch swipe events to open/close
-                touch: true
-            });
+            setTimeout(function(){
+                //wheel.destroy();
+            }, 2000);
+
+            // // Create an instance of Meny
+            // var meny = Meny.create({
+            //     menuElement: document.querySelector( '.meny' ),
+            //     // The contents that gets pushed aside while Meny is active
+            //     contentsElement: document.querySelector( '.contents' ),
+            //     // [optional] The alignment of the menu (top/right/bottom/left)
+            //     position: Meny.getQuery().p || 'bottom',
+            //     // [optional] The height of the menu (when using top/bottom position)
+            //     height: 100,
+            //     // [optional] The width of the menu (when using left/right position)
+            //     width: 260,
+            //     // [optional] Distance from mouse (in pixels) when menu should open
+            //     threshold: 40,
+            //     // [optional] Use mouse movement to automatically open/close
+            //     mouse: true,
+            //     // [optional] Use touch swipe events to open/close
+            //     touch: true
+            // });
 
         </script>
 
