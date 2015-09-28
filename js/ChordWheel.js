@@ -108,7 +108,7 @@ function ChordWheel(config) {
             data: notes1Arr,
             className: 'wheel1',
             bgColor: 'red',
-            bgImage: 'img/slice-green.png',
+            bgImage: 'img/slice-green5.png',
             zIndex: 3, 
             parent: container
         });
@@ -137,7 +137,7 @@ function ChordWheel(config) {
             bgImage: 'img/slice-red.png',
             zIndex: 1,
             parent: container,
-            autoWidth: 100
+            autoWidth: 130
         });
         container.append(bigWheel.getDiv());
         centerInContainer(bigWheel);

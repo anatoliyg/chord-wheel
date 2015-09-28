@@ -1,7 +1,7 @@
 function SoundManager() {
 
 	window.sound = null;
-	var notesArray = ['c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab', 'a', 'a#/bb', 'b', 'cm', 'c#m/dbm', 'dm', 'dm/ebm', 'em', 'fm', 'f#m/gbm', 'gm', 'g#m/abm', 'am', 'a#m/bbm', 'bm']
+	var notesArray = ['c', 'c#/db', 'd', 'd#/eb', 'e', 'f/e#', 'f#/gb', 'g', 'g#/ab', 'a', 'a#/bb', 'b', 'cm', 'c#m/dbm', 'dm', 'd#m/ebm', 'em', 'fm/e#m', 'f#m/gbm', 'gm', 'g#m/abm', 'am', 'a#m/bbm', 'bm']
 	init();
 
 	function init() {
