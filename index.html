@@ -58,6 +58,12 @@
             <div id='wheelHolder'></div>
         </div>
 
+
+        <div>
+            
+
+        </div>
+
         
         <script type="text/javascript" src="js/lib/ua.js"></script>
         <script type="text/javascript" src="js/lib/howler.js"></script>
@@ -84,8 +90,8 @@
             var wheel = new ChordWheel({
                     div: $('#wheelHolder'), 
                     bgColor: 'gray',
-                    width: windowWidth - 300,
-                    height: windowWidth - 300, 
+                    width: windowWidth / 1.4,
+                    height: windowWidth / 1.4, 
                     etc: null
                 });
 
@@ -93,24 +99,24 @@
                 //wheel.destroy();
             }, 2000);
 
-            // // Create an instance of Meny
-            // var meny = Meny.create({
-            //     menuElement: document.querySelector( '.meny' ),
-            //     // The contents that gets pushed aside while Meny is active
-            //     contentsElement: document.querySelector( '.contents' ),
-            //     // [optional] The alignment of the menu (top/right/bottom/left)
-            //     position: Meny.getQuery().p || 'bottom',
-            //     // [optional] The height of the menu (when using top/bottom position)
-            //     height: 100,
-            //     // [optional] The width of the menu (when using left/right position)
-            //     width: 260,
-            //     // [optional] Distance from mouse (in pixels) when menu should open
-            //     threshold: 40,
-            //     // [optional] Use mouse movement to automatically open/close
-            //     mouse: true,
-            //     // [optional] Use touch swipe events to open/close
-            //     touch: true
-            // });
+            // Create an instance of Meny
+            var meny = Meny.create({
+                menuElement: document.querySelector( '.meny' ),
+                // The contents that gets pushed aside while Meny is active
+                contentsElement: document.querySelector( '.contents' ),
+                // [optional] The alignment of the menu (top/right/bottom/left)
+                position: Meny.getQuery().p || 'bottom',
+                // [optional] The height of the menu (when using top/bottom position)
+                height: 100,
+                // [optional] The width of the menu (when using left/right position)
+                width: 260,
+                // [optional] Distance from mouse (in pixels) when menu should open
+                threshold: 40,
+                // [optional] Use mouse movement to automatically open/close
+                mouse: true,
+                // [optional] Use touch swipe events to open/close
+                touch: true
+            });
 
         </script>
 
@@ -122,6 +128,18 @@
             // Events:
             // meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
             // meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
+        </script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-68458343-1', 'auto');
+          ga('send', 'pageview');
+
         </script>
 
     </body>
