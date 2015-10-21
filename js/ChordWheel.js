@@ -136,8 +136,7 @@ function ChordWheel(config) {
             bgColor: 'yellow',
             bgImage: 'img/slice-red.png',
             zIndex: 1,
-            parent: container,
-            autoWidth: 130
+            parent: container
         });
         container.append(bigWheel.getDiv());
         centerInContainer(bigWheel);
