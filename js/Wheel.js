@@ -47,7 +47,7 @@ function EachWheel(config) {
                 fontSize: config.fontSize,
                 textAlign: 'center'
             })
-            .html( svgTriangle(config.size.width, config.size.height, 360/data.length ) )
+            .html( svgSlice(config.size.width, config.size.height, 360/data.length ) )
             .click(function(e){
 
                 var theNoteIndex = $(this).data('note-index')
@@ -59,25 +59,19 @@ function EachWheel(config) {
         }
     };
 
-    function svgTriangle(w, h, angle) {
-        var point1 = {x:0,y:0};
-        var point2 = {x:w,y:0};
-        var point3 = {x:w/2,y:h};
-
-        var pointsArray = [point1, point2, point3]
-        var pointsString = '';
-
-        for(var i = 0; i < pointsArray.length; i ++) {
-            pointsString += pointsArray[i].x + ',';
-            pointsString += pointsArray[i].y + ' '
-        }
-
-
-        var a = pointsString;
-
-        //200,10 250,190 160,210
-        return '<svg height="'+h+'" width="'+w+'"><polygon points="'+pointsString+'" style="fill:'+ 'blue' +';stroke:purple;stroke-width:1" /></svg>'
+    function svgSlice(w, h, angle) {
+        var angleInRadians = angle * Math.PI/180;
+        var yOffset = h * Math.cos(angleInRadians);
+        var startCoord = h - yOffset;
+        //<svg height="400" width="450"><path d="M0,0 l62.5, 216.506 l62.5, -216.506 a250,250 0 0,0 -125,0  z" stroke="blue" stroke-width="5" fill="none" /></svg>
+        var finalString = '<svg height="'+h+'" width="'+w+'"><path d="M0 '+startCoord+' l'+w/2+', '+h+' l'+w/2+', '+(h*-1)+' a'+h+','+h+' 0 0,0 '+(w*-1)+',0 z" stroke="'+'black'+'" stroke-width="'+'1'+'" fill="'+'blue'+'"/></svg>'
+        return finalString;
+        //
+        //return '<svg height= '+h+ ' width= '+w+'> <path d= "M0, '+startCoord+' l '+w/2+','+yOffset+' a '+h+', '+h+' 0'+ '0,0 -'+w+' , 0  z" style="fill:'+ 'blue' +';stroke:purple;stroke-width:1" /></svg>'
     };
+
+
+
 
     //cleanupNote(data[i]) 
     function cleanupNote(text){
