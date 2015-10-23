@@ -64,7 +64,7 @@ function EachWheel(config) {
         var yOffset = h * Math.cos(angleInRadians);
         var startCoord = h - yOffset;
         //<svg height="400" width="450"><path d="M0,0 l62.5, 216.506 l62.5, -216.506 a250,250 0 0,0 -125,0  z" stroke="blue" stroke-width="5" fill="none" /></svg>
-        var finalString = '<svg height="'+h+'" width="'+w+'"><path d="M0 '+startCoord+' l'+w/2+', '+h+' l'+w/2+', '+(h*-1)+' a'+h+','+h+' 0 0,0 '+(w*-1)+',0 z" stroke="'+'black'+'" stroke-width="'+'1'+'" fill="'+'blue'+'"/></svg>'
+        var finalString = '<svg height="'+h+'" width="'+w+'"><path d="M0 '+startCoord+' l'+w/2+', '+yOffset+' l'+w/2+', '+(yOffset*-1)+' a'+h+','+h+' 0 0,0 '+(w*-1)+',0 z" stroke="'+'black'+'" stroke-width="'+'1'+'" fill="'+'blue'+'"/></svg>'
         return finalString;
         //
         //return '<svg height= '+h+ ' width= '+w+'> <path d= "M0, '+startCoord+' l '+w/2+','+yOffset+' a '+h+', '+h+' 0'+ '0,0 -'+w+' , 0  z" style="fill:'+ 'blue' +';stroke:purple;stroke-width:1" /></svg>'
